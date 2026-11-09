@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TUN Foundation</title><script data-langs="en hy fr ru" data-fallback="en">
+      (function (data) {
+        var langs = data.langs.split(' ');
+        var fallback = data.fallback;
+        var map = { uk: 'ru', be: 'ru', kk: 'ru', ky: 'ru', uz: 'ru', tg: 'ru', tk: 'ru' };
+        langs.forEach(function (l) { map[l] = l; });
+        var lang = null;
+        try {
+          var saved = localStorage.getItem('tun-lang');
+          if (langs.indexOf(saved) >= 0) lang = saved;
+        } catch (e) {}
+        var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+        for (var i = 0; i < prefs.length && !lang; i++) lang = map[String(prefs[i]).toLowerCase().split(/[-_;]/)[0]] || null;
+        location.replace('/' + (lang || fallback) + '/');
+      })(document.currentScript.dataset);
+    </script><noscript><meta http-equiv="refresh" content="0; url=/en/"></noscript><link rel="canonical" href="https://tunfoundation.org/en/"><meta name="robots" content="noindex"><link rel="icon" href="/favicon.ico" sizes="any"></head><body style="background:#F3F3E7;color:#2B2D42;font-family:system-ui,sans-serif"><p><a href="/en/" style="color:#4A4F7D">TUN Foundation — continue to the English site</a></p></body></html>
